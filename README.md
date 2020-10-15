@@ -1,1 +1,1 @@
-![xkcd](https://imgs.xkcd.com/comics/good_code.png)
+![xkcd](https://imgs.xkcd.com/comics/paths.jpg)
