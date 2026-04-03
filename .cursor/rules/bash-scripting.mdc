@@ -1,0 +1,25 @@
+---
+description: Bash scripting standards and automation practices
+globs: **/*.sh
+alwaysApply: false
+---
+
+# Bash Scripting
+
+## Standards
+- Descriptive names for scripts and variables (e.g., `backup_files.sh`, `log_rotation`).
+- Modular scripts with functions for readability and reuse.
+- Comments for each major section or function.
+- POSIX-compliant syntax for portability.
+- Lint with `shellcheck`.
+
+## Input & Error Handling
+- Validate all inputs using `getopts` or manual validation.
+- No hardcoded values; use environment variables or parameterized inputs.
+- Use `trap` for error handling and temp file cleanup.
+- Redirect output to log files; separate stdout and stderr.
+
+## Automation
+- Automate cron jobs securely.
+- Use SCP/SFTP with key-based auth for remote transfers.
+- Use Bash for bootstrapping servers, configuring environments, managing backups.

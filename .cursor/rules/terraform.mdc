@@ -1,0 +1,28 @@
+---
+description: Terraform state management and advanced workflows
+globs: **/*.tf
+alwaysApply: false
+---
+
+# Terraform State Management
+
+## Key Principles
+- Use remote backends (S3, Azure Blob, GCS) for centralized, secure state.
+- Enable state locking to prevent concurrent applies.
+- Encrypt state at rest; maintain backup strategies for disaster recovery.
+
+## State Best Practices
+- Separate state files per environment using backends or workspaces (dev, prod).
+- Store state version history and enable locking to avoid concurrency issues.
+- Manage sensitive data with encryption (AWS KMS, Azure Key Vault).
+
+## State Commands
+- Use `terraform state` to inspect, move, or remove resources.
+- Run `terraform refresh` to sync state with actual infrastructure.
+- Fix drift with `terraform plan` and `terraform apply`.
+- Adjust misconfigurations with `terraform state mv` or `rm`.
+
+## Production Workflows
+- Implement rollback mechanisms and plan approval workflows.
+- Use Terraform Cloud/Enterprise for collaboration and version-controlled state.
+- Follow official guidelines: https://www.terraform.io/docs/state/index.html

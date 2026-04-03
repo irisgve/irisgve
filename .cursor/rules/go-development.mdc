@@ -1,0 +1,61 @@
+---
+description: Go microservices, clean architecture, and backend best practices
+globs: **/*.go
+alwaysApply: false
+---
+
+# Go Development
+
+## Architecture
+- Apply **Clean Architecture**: handlers → services/use cases → repositories → domain models.
+- Use domain-driven design and interface-driven development with explicit DI.
+- Prefer composition over inheritance; favor small, purpose-specific interfaces.
+- All public functions interact with interfaces, not concrete types.
+
+## Project Layout
+- `cmd/` entrypoints, `internal/` core logic, `pkg/` shared utils, `api/` transport, `configs/` config, `test/` test utilities.
+- Group by feature when it improves clarity. Keep logic decoupled from frameworks.
+
+## Code Standards
+- Short, focused functions with single responsibility.
+- Handle errors explicitly: `fmt.Errorf("context: %w", err)`.
+- No global state; use constructors for DI.
+- Propagate `context.Context` for deadlines, cancellations, request-scoped values.
+- Defer resource cleanup. Guard shared state with channels or sync primitives.
+
+## Security & Resilience
+- Rigorous input validation on external inputs.
+- Secure defaults for JWT, cookies, config.
+- Retries, exponential backoff, timeouts on all external calls.
+- Circuit breakers and rate limiting for service protection.
+
+## Testing
+- Table-driven tests with parallel execution.
+- Mock external interfaces cleanly.
+- Separate unit tests from integration/E2E tests.
+- Coverage for every exported function. Use `go test -cover`.
+
+## Observability (OpenTelemetry)
+- Use `otel.Tracer` for spans, `otel.Meter` for metrics.
+- Propagate spans across all service boundaries (HTTP, gRPC, DB, external APIs).
+- Attach `context.Context` to spans, logs, and metrics.
+- Log correlation via trace IDs in structured JSON logs.
+- Export to OpenTelemetry Collector, Jaeger, or Prometheus.
+
+## Monitoring
+- Trace all incoming requests; propagate context through call chains.
+- Use middleware to auto-instrument HTTP/gRPC endpoints.
+- Key metrics: request latency, throughput, error rate, resource usage.
+- Define SLIs and track with Prometheus/Grafana dashboards.
+- Avoid excessive cardinality in labels and traces.
+
+## Performance & Concurrency
+- Benchmark to track regressions; profile before optimizing.
+- Safe goroutine usage with cancellation via context propagation.
+- Minimize allocations; instrument DB, external calls, heavy computation.
+
+## Tooling
+- Prefer standard library; use stable, minimal third-party libs.
+- Go modules for dependency management. Version-lock for deterministic builds.
+- Enforce `go fmt`, `goimports`, `golangci-lint`. Integrate in CI.
+- GoDoc-style comments on all public functions and packages.

@@ -1,0 +1,18 @@
+---
+description: Python coding standards and testing practices
+globs: **/*.py
+alwaysApply: false
+---
+
+# Python Development
+
+## Standards
+- PEP 8 compliant, Pythonic code.
+- Type hints for all functions and classes.
+- DRY and KISS principles.
+- Virtual environments or Docker for dependency management.
+
+## Testing
+- `pytest` for unit testing.
+- Mocking libraries for external services.
+- Meaningful unit, integration, and acceptance tests.

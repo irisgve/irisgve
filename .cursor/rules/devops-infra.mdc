@@ -1,0 +1,54 @@
+---
+description: DevOps, Kubernetes, Ansible, Azure, and infrastructure practices
+alwaysApply: true
+---
+
+# DevOps & Infrastructure
+
+## Naming Conventions
+- camelCase: variables, functions, methods
+- PascalCase: classes
+- snake_case: file names, directories
+- UPPER_CASE: environment variables
+
+## Core Principles
+- No hard-coded values; use env vars or config files.
+- Infrastructure-as-Code (IaC) everywhere.
+- Principle of least privilege for access and permissions.
+- Modular, reusable CI/CD pipelines.
+- Containerized apps with secure registries.
+- Secrets via Azure Key Vault or equivalent.
+- Blue-green or canary deployment strategies.
+
+## Kubernetes
+- Helm charts or Kustomize for deployments.
+- GitOps for declarative cluster state.
+- Workload identities for secure pod-to-service communication.
+- StatefulSets for persistent storage needs.
+- HPA for autoscaling. Network policies for traffic restriction.
+- Monitor with Prometheus, Grafana, Falco.
+
+## Ansible
+- Idempotent playbooks. Organize with `group_vars`, `host_vars`, and `roles`.
+- Validate with `ansible-lint`. Use Ansible Vault for secrets.
+- Dynamic inventories for cloud environments.
+- Tags for flexible execution. Jinja2 for dynamic configs.
+- `block:`/`rescue:` for error handling.
+
+## Azure
+- ARM templates or Terraform for provisioning.
+- Azure Pipelines with reusable YAML templates and stages.
+- Gated deployments and rollback mechanisms.
+- Azure Monitor and Log Analytics for observability.
+- Cost optimization via reserved instances and scaling policies.
+
+## System Design
+- High availability and fault tolerance.
+- Event-driven architecture (Azure Event Grid, Kafka) where applicable.
+- Secure with TLS, IAM roles, firewalls.
+- DevSecOps: security at every stage.
+
+## Documentation
+- Document in markdown or Confluence.
+- Diagrams for architecture and workflows.
+- Git with clear branching strategy.
